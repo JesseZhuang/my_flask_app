@@ -20,3 +20,15 @@ python3 -m venv circle_env
 cd circle_env
 source bin/activate
 ```
+
+## Postgres
+
+use `attach_db.sh` to connect to db on the cli.
+
+```
+\dt  # list tables
+\l   # list databases
+\c <db_name>  # choose/use database
+\i <sql_file_name>. # run sql file
+Select * from flights;  # note capital S
+```

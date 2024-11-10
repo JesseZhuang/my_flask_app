@@ -27,6 +27,8 @@ app = flask.Flask(__name__)
 # Basic ping endpoint
 @app.route('/ping')
 def ping():
+  flights.hello()
+  app.logger.debug(f'pinged: {datetime.now()}')
   return {
     'message': 'pong'
   }
