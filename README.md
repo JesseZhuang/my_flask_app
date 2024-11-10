@@ -9,5 +9,14 @@ Everything you do here is contained within this one codespace. There is no repos
 To run this application:
 
 ```
+cd circle
 flask --debug run
+
+flask --app flaskr run --debug
+```
+
+```
+python3 -m venv circle_env
+cd circle_env
+source bin/activate
 ```
