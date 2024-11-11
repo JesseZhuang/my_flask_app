@@ -2,6 +2,7 @@
 import logging
 
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.DEBUG)
 
 # A class to represent a Flight
 class Flight:
@@ -32,10 +33,10 @@ def getFlight(db, id):
   # Open a database connection
   with db.cursor() as cur:
     # Fetch the row.  %(id)s is filled in with 'id' from the parameters dictionary.
-    logger.debug(f'get flight id:{id}')
+    logger.info(f'get flight id:{id}')
     cur.execute('SELECT * FROM flights WHERE id = %(id)s', { 'id': id })
     # See if we got any rows back
-    logger.debug(f'found {cur.rowcount} flights')
+    logger.info(f'found {cur.rowcount} flights')
     if cur.rowcount == 0:
       # We didn't, so return None
       return None

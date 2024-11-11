@@ -23,6 +23,8 @@ source bin/activate
 
 ## Postgres
 
+`sudo service postgresql start` to start after installation.
+
 use `attach_db.sh` to connect to db on the cli.
 
 ```
@@ -31,4 +33,5 @@ use `attach_db.sh` to connect to db on the cli.
 \c <db_name>  # choose/use database
 \i <sql_file_name>. # run sql file
 Select * from flights;  # note capital S
+select current_database();  # show current db
 ```
