@@ -54,12 +54,17 @@ def getFlight(id):
   return { 'data': flight.__dict__ }
 
 
-@app.route('/flights/book')
+@app.route('/flights/book', methods=['POST','GET'])
 def flight_book():
-  dest: str = request.args.get("dest")
-  start: str = request.args.get("start")
-  end: str = request.args.get("end")   # optional
-  tickets_count: str = request.args.get('tickets')  # optional
+  app.logger.debug(request)
+  data = request.get_json()
+  app.logger.debug(f'data:{data}')
+  # dest: str = request.args.get("dest")
+  # start: str = request.args.get("start")
+  # end: str = request.args.get("end")   # optional
+  dest,start,end,tickets_count=data['dest'],data['start'],data['end'],data.get('tickets')
+  app.logger.debug(dest, start, end)
+  # tickets_count: str = request.args.get('tickets')  # optional
   
   if not dest or not start or not end:
     return {'message': 'Required parameters not included!'}, 400

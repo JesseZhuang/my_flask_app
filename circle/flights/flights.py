@@ -58,6 +58,8 @@ def book_flights(db, destination, start, end, tickets_count):
   AND arrival <= %(arrival)s
   ORDER By price ASC
   """
+  logger.debug(f'''dest:{destination}, start:{start},
+                end:{end}, c:{tickets_count}''')
   with db.cursor() as cur:
     cur.execute(query_search, {
       'destination': destination, 
@@ -65,6 +67,7 @@ def book_flights(db, destination, start, end, tickets_count):
       'departure': start,
       'arrival': end
       })
+    logger.debug(cur.rowcount)
     if cur.rowcount == 0:
       return None
     row = cur.fetchone()
